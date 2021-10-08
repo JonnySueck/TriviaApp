@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import com.example.android.navigation.databinding.FragmentTitleBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,7 +23,12 @@ class TitleFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val binding: FragmentTitleBinding = DataBindingUtil.inflate<FragmentTitleBinding>(inflater, R.layout.fragment_title, container, false)
+        //the complete onClickListener with Navigation
+        binding.playButton.setOnClickListener (
+            Navigation.createNavigateOnClickListener(R.id.action_titleFragment2_to_gameFragment)
+                )
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_title, container, false)
+        return binding.root
     }
 }
